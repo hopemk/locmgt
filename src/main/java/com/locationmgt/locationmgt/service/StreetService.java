@@ -6,6 +6,8 @@
 package com.locationmgt.locationmgt.service;
 
 import com.locationmgt.locationmgt.Dto.StreetDto;
+import com.locationmgt.locationmgt.entity.Street;
+import java.util.List;
 
 /**
  *
@@ -13,5 +15,7 @@ import com.locationmgt.locationmgt.Dto.StreetDto;
  */
 public interface StreetService {
     String saveStreet(StreetDto streetDto);
+    
+    List<Street> findAllStreetsByAreaId(Long id);
     
 }

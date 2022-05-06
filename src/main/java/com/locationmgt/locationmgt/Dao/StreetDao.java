@@ -6,6 +6,7 @@
 package com.locationmgt.locationmgt.Dao;
 
 import com.locationmgt.locationmgt.entity.Street;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +17,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StreetDao extends JpaRepository<Street, Long>{
 
+    public List<Street> findByAreaId(Long id);
     
 }

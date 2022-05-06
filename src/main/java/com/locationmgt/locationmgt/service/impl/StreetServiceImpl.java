@@ -11,6 +11,7 @@ import com.locationmgt.locationmgt.Dto.StreetDto;
 import com.locationmgt.locationmgt.entity.Street;
 import com.locationmgt.locationmgt.service.StreetService;
 import java.time.LocalDate;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,12 @@ public class StreetServiceImpl implements StreetService{
         street.setDateCreated(LocalDate.now());
         streetDao.save(street);
         return "success";
+    }
+    
+    @Override
+    public List<Street> findAllStreetsByAreaId(Long id) {
+        return streetDao.findByAreaId(id);
+        
     }
     
 }
