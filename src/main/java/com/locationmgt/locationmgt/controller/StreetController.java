@@ -6,11 +6,15 @@
 package com.locationmgt.locationmgt.controller;
 
 import com.locationmgt.locationmgt.Dto.StreetDto;
+import com.locationmgt.locationmgt.entity.Street;
 import com.locationmgt.locationmgt.service.StreetService;
 import java.text.ParseException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,6 +29,13 @@ public class StreetController {
     @PostMapping("street/save")
     public String save(@RequestBody StreetDto streetDto){
         String response = streetService.saveStreet(streetDto);
+        return response;
+    }
+    
+    @GetMapping("street/findallbyarea")
+    public List<Street> findAllShopsByShopId(@RequestParam(name="areaId") String areaId){
+        long id = Long.valueOf(areaId);
+        List<Street> response = streetService.findAllStreetsByAreaId(id);
         return response;
     }
     
