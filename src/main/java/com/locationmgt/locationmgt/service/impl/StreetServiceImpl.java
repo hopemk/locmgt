@@ -31,7 +31,8 @@ public class StreetServiceImpl implements StreetService{
     @Override
     public String saveStreet(StreetDto streetDto) {
         Street street = new Street();
-        street.setName(streetDto.getName());
+        //save name in uppercase without special characters
+        street.setName(streetDto.getName().toUpperCase().replaceAll("[^A-Za-z0-9]",""));
         street.setArea(areaDao.findById(streetDto.getAreaId()).get());
         street.setDateCreated(LocalDate.now());
         streetDao.save(street);
