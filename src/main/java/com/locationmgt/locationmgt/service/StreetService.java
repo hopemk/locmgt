@@ -18,4 +18,6 @@ public interface StreetService {
     
     List<Street> findAllStreetsByAreaId(Long id);
     
+    String deleteStreet(Long id);
+    
 }

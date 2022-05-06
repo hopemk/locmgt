@@ -11,6 +11,7 @@ import com.locationmgt.locationmgt.service.StreetService;
 import java.text.ParseException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,9 +34,15 @@ public class StreetController {
     }
     
     @GetMapping("street/findallbyarea")
-    public List<Street> findAllShopsByShopId(@RequestParam(name="areaId") String areaId){
+    public List<Street> findAllStreetsByAreaId(@RequestParam(name="areaId") String areaId){
         long id = Long.valueOf(areaId);
         List<Street> response = streetService.findAllStreetsByAreaId(id);
+        return response;
+    }
+    @DeleteMapping("street/deletebyid")
+    public String deleteStreetById(@RequestParam(name="streetId") String streetId){
+        long id = Long.valueOf(streetId);
+        String response = streetService.deleteStreet(id);
         return response;
     }
     

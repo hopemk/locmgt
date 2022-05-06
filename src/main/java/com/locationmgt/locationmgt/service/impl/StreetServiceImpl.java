@@ -43,5 +43,17 @@ public class StreetServiceImpl implements StreetService{
         return streetDao.findByAreaId(id);
         
     }
+
+    @Override
+    public String deleteStreet(Long id) {
+        Street street = streetDao.getById(id);
+        //System.out.println(street);
+        /*
+        if(street.getName().le){
+            return "street not found";
+        }*/
+        streetDao.delete(street);
+        return "deleted";
+    }
     
 }
